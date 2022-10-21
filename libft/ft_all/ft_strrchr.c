@@ -6,27 +6,43 @@
 /*   By: miguelbelo <miguelbelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:14:09 by miguelbelo        #+#    #+#             */
-/*   Updated: 2022/10/07 23:46:53 by miguelbelo       ###   ########.fr       */
+/*   Updated: 2022/10/12 15:24:12 by miguelbelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+/* ft_strrchr function reversely searches for char c in str,
+returning a pointer to the char in the string if found */
+
+char	*ft_strrchr(const char *s, int c)
 {
-	const char *l;
-	int i;
+	char	*res;
 
-	i = ft_strlen(s);
-	l = 0;
-	while (i >= 0)
+	res = 0;
+	while (*s)
 	{
-		if (s[i] == c)
-		{
-			l = &s[i];
-			return (l);
-		}
-		i--;
+		if (*s == (unsigned char)c)
+			res = (char *)s;
+		s++;
 	}
-	return (l);
+	if ((unsigned char)c == 0)
+	{
+		return ((char *)s);
+	}
+	return (res);
 }
+
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	char c = 'A';
+	char arr[] = "McacaelerAcorda Pedridnho";
+
+	printf("Initial String: %s\n", arr);
+	printf("String: %s\n", ft_strrchr(arr, c));
+	return (0);
+}
+*/
